@@ -1,0 +1,43 @@
+games/factorio/definition.yaml
+  s_3bffb53c17a525::t_32393d29b3d4a8 1-55
+games/factorio/settings.spec.yaml
+  s_3bffb53c17a525::t_566b80ec00029d 1-102
+games/factorio/settings.template.yaml
+  s_3bffb53c17a525::t_7366eaaca851e4 1-30
+games/palworld/definition.yaml
+  s_3bffb53c17a525::t_6ed5a5c33e38b9 1-46
+games/palworld/settings.spec.yaml
+  s_3bffb53c17a525::t_f0ef7a736e9f89 1-723
+games/palworld/settings.template.yaml
+  s_3bffb53c17a525::t_83f26ad375440b 1-155
+games/valheim/definition.yaml
+  s_3bffb53c17a525::t_b857532db83990 1-65
+games/valheim/settings.spec.yaml
+  s_3bffb53c17a525::t_51247bbc86fe2b 1-160
+games/valheim/settings.template.yaml
+  s_3bffb53c17a525::t_55617c1ea82b00 1-49
+games/vrising/definition.yaml
+  s_3bffb53c17a525::t_26802fe1cdc11b 1-90
+games/vrising/settings.spec.yaml
+  s_3bffb53c17a525::t_bf1d224252d534 1-515
+games/vrising/settings.template.yaml
+  s_3bffb53c17a525::t_a79fe49943886d 1-106
+index.yaml
+  s_3bffb53c17a525::t_eb3fc6252f1250 1-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "536ac9c62d73b972c92438abd9dba4d865135b81",
+  "prompts": {},
+  "sessions": {
+    "s_3bffb53c17a525": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ef6c7-8529-7ff3-baef-867f6d1e58ee",
+        "model": "gpt-5.5"
+      },
+      "human_author": "JinxCappa <git@jinxcappa.dev>"
+    }
+  }
+}
