@@ -1,0 +1,515 @@
+schema_version: v1
+spec_version: 1
+game_id: vrising
+display_name: V Rising Dedicated Server Settings
+metadata:
+  completeness: partial
+  confidence: inspected
+  tested_versions: []
+provenance:
+  sources:
+    - kind: url
+      label: V Rising Dedicated Server wiki
+      url: https://vrising.fandom.com/wiki/V_Rising_Dedicated_Server
+    - kind: url
+      label: V Rising Server Settings wiki
+      url: https://vrising.fandom.com/wiki/Server_Settings
+
+files:
+  host_settings:
+    path: /data/Settings/ServerHostSettings.json
+    format: json
+  game_settings:
+    path: /data/Settings/ServerGameSettings.json
+    format: json
+
+settings:
+  host.name:
+    type: string
+    default: My V Rising Server
+    env: GAMER_SETTING__HOST__NAME
+    targets:
+      - kind: file
+        file: host_settings
+        path: Name
+
+  host.description:
+    type: string
+    default: Managed by Gametainer
+    env: GAMER_SETTING__HOST__DESCRIPTION
+    targets:
+      - kind: file
+        file: host_settings
+        path: Description
+
+  host.port:
+    type: int
+    default: 27015
+    env: GAMER_SETTING__HOST__PORT
+    targets:
+      - kind: file
+        file: host_settings
+        path: Port
+
+  host.query_port:
+    type: int
+    default: 27016
+    env: GAMER_SETTING__HOST__QUERY_PORT
+    targets:
+      - kind: file
+        file: host_settings
+        path: QueryPort
+
+  host.address:
+    type: string
+    default: 0.0.0.0
+    env: GAMER_SETTING__HOST__ADDRESS
+    targets: []
+
+  host.max_connected_users:
+    type: int
+    default: 40
+    env: GAMER_SETTING__HOST__MAX_CONNECTED_USERS
+    targets:
+      - kind: file
+        file: host_settings
+        path: MaxConnectedUsers
+
+  host.max_connected_admins:
+    type: int
+    default: 4
+    env: GAMER_SETTING__HOST__MAX_CONNECTED_ADMINS
+    targets:
+      - kind: file
+        file: host_settings
+        path: MaxConnectedAdmins
+
+  host.server_fps:
+    type: int
+    default: 30
+    env: GAMER_SETTING__HOST__SERVER_FPS
+    targets:
+      - kind: file
+        file: host_settings
+        path: ServerFps
+
+  host.save_name:
+    type: string
+    default: world1
+    env: GAMER_SETTING__HOST__SAVE_NAME
+    targets:
+      - kind: file
+        file: host_settings
+        path: SaveName
+
+  host.password:
+    type: string
+    default: ""
+    sensitive: true
+    env: GAMER_SETTING__HOST__PASSWORD
+    targets:
+      - kind: file
+        file: host_settings
+        path: Password
+
+  host.secure:
+    type: bool
+    default: true
+    env: GAMER_SETTING__HOST__SECURE
+    targets:
+      - kind: file
+        file: host_settings
+        path: Secure
+
+  host.list_on_steam:
+    type: bool
+    default: false
+    env: GAMER_SETTING__HOST__LIST_ON_STEAM
+    targets:
+      - kind: file
+        file: host_settings
+        path: ListOnSteam
+
+  host.list_on_eos:
+    type: bool
+    default: false
+    env: GAMER_SETTING__HOST__LIST_ON_EOS
+    targets:
+      - kind: file
+        file: host_settings
+        path: ListOnEOS
+
+  host.auto_save_count:
+    type: int
+    default: 20
+    env: GAMER_SETTING__HOST__AUTO_SAVE_COUNT
+    targets:
+      - kind: file
+        file: host_settings
+        path: AutoSaveCount
+
+  host.auto_save_interval:
+    type: int
+    default: 120
+    env: GAMER_SETTING__HOST__AUTO_SAVE_INTERVAL
+    targets:
+      - kind: file
+        file: host_settings
+        path: AutoSaveInterval
+
+  host.compress_save_files:
+    type: bool
+    default: true
+    env: GAMER_SETTING__HOST__COMPRESS_SAVE_FILES
+    targets:
+      - kind: file
+        file: host_settings
+        path: CompressSaveFiles
+
+  host.game_settings_preset:
+    type: string
+    default: ""
+    env: GAMER_SETTING__HOST__GAME_SETTINGS_PRESET
+    targets:
+      - kind: file
+        file: host_settings
+        path: GameSettingsPreset
+
+  host.admin_only_debug_events:
+    type: bool
+    default: true
+    env: GAMER_SETTING__HOST__ADMIN_ONLY_DEBUG_EVENTS
+    targets:
+      - kind: file
+        file: host_settings
+        path: AdminOnlyDebugEvents
+
+  host.disable_debug_events:
+    type: bool
+    default: false
+    env: GAMER_SETTING__HOST__DISABLE_DEBUG_EVENTS
+    targets:
+      - kind: file
+        file: host_settings
+        path: DisableDebugEvents
+
+  game.game_mode_type:
+    type: string
+    default: PvE
+    env: GAMER_SETTING__GAME__GAME_MODE_TYPE
+    targets:
+      - kind: file
+        file: game_settings
+        path: GameModeType
+
+  game.castle_damage_mode:
+    type: string
+    default: Never
+    env: GAMER_SETTING__GAME__CASTLE_DAMAGE_MODE
+    targets:
+      - kind: file
+        file: game_settings
+        path: CastleDamageMode
+
+  game.siege_weapon_health:
+    type: string
+    default: Normal
+    env: GAMER_SETTING__GAME__SIEGE_WEAPON_HEALTH
+    targets:
+      - kind: file
+        file: game_settings
+        path: SiegeWeaponHealth
+
+  game.player_damage_mode:
+    type: string
+    default: Always
+    env: GAMER_SETTING__GAME__PLAYER_DAMAGE_MODE
+    targets:
+      - kind: file
+        file: game_settings
+        path: PlayerDamageMode
+
+  game.castle_heart_damage_mode:
+    type: string
+    default: CanBeDestroyedOnlyWhenDecaying
+    env: GAMER_SETTING__GAME__CASTLE_HEART_DAMAGE_MODE
+    targets:
+      - kind: file
+        file: game_settings
+        path: CastleHeartDamageMode
+
+  game.pvp_protection_mode:
+    type: string
+    default: Medium
+    env: GAMER_SETTING__GAME__PVP_PROTECTION_MODE
+    targets:
+      - kind: file
+        file: game_settings
+        path: PvPProtectionMode
+
+  game.death_container_permission:
+    type: string
+    default: Anyone
+    env: GAMER_SETTING__GAME__DEATH_CONTAINER_PERMISSION
+    targets:
+      - kind: file
+        file: game_settings
+        path: DeathContainerPermission
+
+  game.relic_spawn_type:
+    type: string
+    default: Unique
+    env: GAMER_SETTING__GAME__RELIC_SPAWN_TYPE
+    targets:
+      - kind: file
+        file: game_settings
+        path: RelicSpawnType
+
+  game.can_loot_enemy_containers:
+    type: bool
+    default: false
+    env: GAMER_SETTING__GAME__CAN_LOOT_ENEMY_CONTAINERS
+    targets:
+      - kind: file
+        file: game_settings
+        path: CanLootEnemyContainers
+
+  game.blood_bound_equipment:
+    type: bool
+    default: true
+    env: GAMER_SETTING__GAME__BLOOD_BOUND_EQUIPMENT
+    targets:
+      - kind: file
+        file: game_settings
+        path: BloodBoundEquipment
+
+  game.teleport_bound_items:
+    type: bool
+    default: true
+    env: GAMER_SETTING__GAME__TELEPORT_BOUND_ITEMS
+    targets:
+      - kind: file
+        file: game_settings
+        path: TeleportBoundItems
+
+  game.allow_global_chat:
+    type: bool
+    default: true
+    env: GAMER_SETTING__GAME__ALLOW_GLOBAL_CHAT
+    targets:
+      - kind: file
+        file: game_settings
+        path: AllowGlobalChat
+
+  game.all_waypoints_unlocked:
+    type: bool
+    default: false
+    env: GAMER_SETTING__GAME__ALL_WAYPOINTS_UNLOCKED
+    targets:
+      - kind: file
+        file: game_settings
+        path: AllWaypointsUnlocked
+
+  game.free_castle_claim:
+    type: bool
+    default: false
+    env: GAMER_SETTING__GAME__FREE_CASTLE_CLAIM
+    targets:
+      - kind: file
+        file: game_settings
+        path: FreeCastleClaim
+
+  game.free_castle_destroy:
+    type: bool
+    default: false
+    env: GAMER_SETTING__GAME__FREE_CASTLE_DESTROY
+    targets:
+      - kind: file
+        file: game_settings
+        path: FreeCastleDestroy
+
+  game.inactivity_kill_enabled:
+    type: bool
+    default: true
+    env: GAMER_SETTING__GAME__INACTIVITY_KILL_ENABLED
+    targets:
+      - kind: file
+        file: game_settings
+        path: InactivityKillEnabled
+
+  game.inactivity_kill_time_min:
+    type: int
+    default: 3600
+    env: GAMER_SETTING__GAME__INACTIVITY_KILL_TIME_MIN
+    targets:
+      - kind: file
+        file: game_settings
+        path: InactivityKillTimeMin
+
+  game.inactivity_kill_time_max:
+    type: int
+    default: 604800
+    env: GAMER_SETTING__GAME__INACTIVITY_KILL_TIME_MAX
+    targets:
+      - kind: file
+        file: game_settings
+        path: InactivityKillTimeMax
+
+  game.clan_size:
+    type: int
+    default: 4
+    env: GAMER_SETTING__GAME__CLAN_SIZE
+    targets:
+      - kind: file
+        file: game_settings
+        path: ClanSize
+
+  game.inventory_stacks_modifier:
+    type: float
+    default: 1.0
+    env: GAMER_SETTING__GAME__INVENTORY_STACKS_MODIFIER
+    targets:
+      - kind: file
+        file: game_settings
+        path: InventoryStacksModifier
+
+  game.material_yield_modifier_global:
+    type: float
+    default: 1.0
+    env: GAMER_SETTING__GAME__MATERIAL_YIELD_MODIFIER_GLOBAL
+    targets:
+      - kind: file
+        file: game_settings
+        path: MaterialYieldModifier_Global
+
+  game.blood_essence_yield_modifier:
+    type: float
+    default: 1.0
+    env: GAMER_SETTING__GAME__BLOOD_ESSENCE_YIELD_MODIFIER
+    targets:
+      - kind: file
+        file: game_settings
+        path: BloodEssenceYieldModifier
+
+  game.durability_drain_modifier:
+    type: float
+    default: 1.0
+    env: GAMER_SETTING__GAME__DURABILITY_DRAIN_MODIFIER
+    targets:
+      - kind: file
+        file: game_settings
+        path: DurabilityDrainModifier
+
+  game.castle_decay_rate_modifier:
+    type: float
+    default: 1.0
+    env: GAMER_SETTING__GAME__CASTLE_DECAY_RATE_MODIFIER
+    targets:
+      - kind: file
+        file: game_settings
+        path: CastleDecayRateModifier
+
+  game.castle_blood_essence_drain_modifier:
+    type: float
+    default: 1.0
+    env: GAMER_SETTING__GAME__CASTLE_BLOOD_ESSENCE_DRAIN_MODIFIER
+    targets:
+      - kind: file
+        file: game_settings
+        path: CastleBloodEssenceDrainModifier
+
+  game.build_cost_modifier:
+    type: float
+    default: 1.0
+    env: GAMER_SETTING__GAME__BUILD_COST_MODIFIER
+    targets:
+      - kind: file
+        file: game_settings
+        path: BuildCostModifier
+
+  game.recipe_cost_modifier:
+    type: float
+    default: 1.0
+    env: GAMER_SETTING__GAME__RECIPE_COST_MODIFIER
+    targets:
+      - kind: file
+        file: game_settings
+        path: RecipeCostModifier
+
+  game.craft_rate_modifier:
+    type: float
+    default: 1.0
+    env: GAMER_SETTING__GAME__CRAFT_RATE_MODIFIER
+    targets:
+      - kind: file
+        file: game_settings
+        path: CraftRateModifier
+
+  game.refinement_cost_modifier:
+    type: float
+    default: 1.0
+    env: GAMER_SETTING__GAME__REFINEMENT_COST_MODIFIER
+    targets:
+      - kind: file
+        file: game_settings
+        path: RefinementCostModifier
+
+  game.refinement_rate_modifier:
+    type: float
+    default: 1.0
+    env: GAMER_SETTING__GAME__REFINEMENT_RATE_MODIFIER
+    targets:
+      - kind: file
+        file: game_settings
+        path: RefinementRateModifier
+
+  game.servant_convert_rate_modifier:
+    type: float
+    default: 1.0
+    env: GAMER_SETTING__GAME__SERVANT_CONVERT_RATE_MODIFIER
+    targets:
+      - kind: file
+        file: game_settings
+        path: ServantConvertRateModifier
+
+  game.repair_cost_modifier:
+    type: float
+    default: 1.0
+    env: GAMER_SETTING__GAME__REPAIR_COST_MODIFIER
+    targets:
+      - kind: file
+        file: game_settings
+        path: RepairCostModifier
+
+process_args:
+  persistent_data_path:
+    type: string
+    default: 'Z:\data'
+    env: GAMER_ARG__PERSISTENT_DATA_PATH
+    target:
+      style: positional
+
+  log_file:
+    type: string
+    default: 'Z:\data\logs\VRisingServer.log'
+    env: GAMER_ARG__LOG_FILE
+    target:
+      style: positional
+
+process:
+  args:
+    - "{{ process.executable }}"
+    - -persistentDataPath
+    - "{{ process.args.persistent_data_path }}"
+    - -serverName
+    - "{{ settings.host.name }}"
+    - -saveName
+    - "{{ settings.host.save_name }}"
+    - -address
+    - "{{ settings.host.address }}"
+    - -gamePort
+    - "{{ settings.host.port }}"
+    - -queryPort
+    - "{{ settings.host.query_port }}"
+    - -logFile
+    - "{{ process.args.log_file }}"

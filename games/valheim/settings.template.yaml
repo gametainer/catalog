@@ -1,0 +1,49 @@
+game:
+  id: valheim
+
+install:
+  mode: steamcmd
+  install_dir: /game
+  cache_dir: /cache
+  steamcmd_app_id: "896660"
+  steamcmd_anonymous_login: true
+
+paths:
+  data_dir: /data
+  config_dir: /config
+  secrets_dir: /secrets
+
+process:
+  executable: /game/valheim_server.x86_64
+  working_dir: /game
+  env:
+    LD_LIBRARY_PATH: /game/linux64
+  args:
+    server.name: My Valheim Server
+    server.port: 2456
+    server.password: change-me
+    server.public: 1
+    world.name: Dedicated
+    data.savedir: /data
+    logging.log_file: /data/logs/valheim-server.log
+    saves.save_interval: 1800
+    saves.backups: 4
+    saves.backup_short: 7200
+    saves.backup_long: 43200
+    crossplay.enabled: false
+    crossplay.instance_id: ""
+    world_modifiers.preset: ""
+    world_modifiers.combat: ""
+    world_modifiers.death_penalty: ""
+    world_modifiers.resources: ""
+    world_modifiers.raids: ""
+    world_modifiers.portals: ""
+    world_modifiers.setkey: ""
+
+readiness:
+  probes:
+    - name: log
+      kind: file_contains
+      path: /data/logs/valheim-server.log
+      pattern: Game server connected
+      timeout_seconds: 120

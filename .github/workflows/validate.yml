@@ -1,0 +1,59 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  catalog:
+    name: catalog
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Install Gametainer
+        shell: bash
+        env:
+          REPO: gametainer/gametainer
+          TARGET: x86_64-unknown-linux-musl
+        run: |
+          set -euo pipefail
+          version="$(tr -d '[:space:]' < .gametainer-version)"
+          if [[ -z "$version" ]]; then
+            echo ".gametainer-version is empty" >&2
+            exit 1
+          fi
+
+          archive="gametainer-${version}-${TARGET}.tar.gz"
+          base_url="https://github.com/${REPO}/releases/download/${version}"
+
+          curl --fail --location --show-error --silent --output "$archive" "${base_url}/${archive}"
+          curl --fail --location --show-error --silent --output "${archive}.sha256" "${base_url}/${archive}.sha256"
+          expected_hash="$(awk '{print $1}' "${archive}.sha256")"
+          actual_hash="$(shasum --algorithm 256 "$archive" | awk '{print $1}')"
+          if [[ "$actual_hash" != "$expected_hash" ]]; then
+            echo "checksum mismatch for $archive" >&2
+            echo "expected: $expected_hash" >&2
+            echo "actual:   $actual_hash" >&2
+            exit 1
+          fi
+
+          mkdir -p "$RUNNER_TEMP/gametainer-bin"
+          tar -xzf "$archive" -C "$RUNNER_TEMP/gametainer-bin" --strip-components=1
+          echo "$RUNNER_TEMP/gametainer-bin" >> "$GITHUB_PATH"
+
+      - name: Validate catalog
+        shell: bash
+        run: |
+          set -euo pipefail
+          gametainer version
+          gametainer catalog validate --templates .
+          gametainer games list --templates .

@@ -1,0 +1,19 @@
+schema_version: v1
+revision: local-dev
+games:
+  - id: factorio
+    name: Factorio Dedicated Server
+    path: games/factorio
+    tags: [automation, survival, archive]
+  - id: palworld
+    name: Palworld Dedicated Server
+    path: games/palworld
+    tags: [survival, steamcmd]
+  - id: valheim
+    name: Valheim Dedicated Server
+    path: games/valheim
+    tags: [survival, steamcmd]
+  - id: vrising
+    name: V Rising Dedicated Server
+    path: games/vrising
+    tags: [survival, steamcmd, wine]

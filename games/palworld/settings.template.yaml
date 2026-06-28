@@ -1,0 +1,155 @@
+game:
+  id: palworld
+
+install:
+  mode: steamcmd
+  install_dir: /game
+  cache_dir: /cache
+  steamcmd_app_id: "2394010"
+  steamcmd_anonymous_login: true
+
+paths:
+  data_dir: /data
+  config_dir: /config
+  secrets_dir: /secrets
+
+process:
+  executable: /game/PalServer.sh
+  working_dir: /game
+  args:
+    port: 8211
+    players: 32
+    log_format: text
+    public_lobby: false
+    public_ip: ""
+    public_port: null
+    worker_threads: null
+    performance:
+      use_perf_threads: true
+      no_async_loading_thread: true
+      use_multithread_for_ds: true
+
+settings:
+  server:
+    name: Default Palworld Server
+    description: ""
+    admin_password: ""
+    password: ""
+    max_players: 32
+    public_ip: ""
+    public_port: 8211
+    rcon:
+      enabled: false
+      port: 25575
+    rest_api:
+      enabled: false
+      port: 8212
+    region: ""
+    use_auth: true
+    ban_list_url: https://api.palworldgame.com/api/banlist.txt
+    allow_client_mod: false
+    show_join_left_message: true
+    use_backup_save_data: false
+    chat_post_limit_per_minute: 10
+    crossplay_platforms:
+      raw: "(Steam,Xbox,PS5,Mac)"
+    allow_connect_platform:
+      raw: "()"
+    log_format_type:
+      raw: Text
+
+  performance:
+    base_camp_max_num_in_guild: 4
+    base_camp_worker_max_num: 15
+    item_container_force_mark_dirty_interval: 1.0
+    max_building_limit_num: 0
+    server_replicate_pawn_cull_distance: 15000.0
+
+  features:
+    auto_reset_guild_no_online_players: false
+    auto_reset_guild_time_no_online_players: 72.0
+    allow_enhance_stat_attack: true
+    allow_enhance_stat_health: true
+    allow_enhance_stat_stamina: true
+    allow_enhance_stat_weight: true
+    allow_enhance_stat_work_speed: true
+    allow_global_palbox_export: true
+    allow_global_palbox_import: true
+    build_area_limit: false
+    character_recreate_in_hardcore: false
+    display_pvp_item_num_on_world_map_base_camp: false
+    display_pvp_item_num_on_world_map_player: false
+    enable_fast_travel: true
+    enable_fast_travel_only_base_camp: false
+    enable_invader_enemy: true
+    exist_player_after_logout: false
+    hardcore: false
+    invisible_other_guild_base_camp_area_fx: false
+    randomizer_pal_level_random: false
+    start_location_select_by_map: true
+    show_player_list: true
+    randomizer_seed: ""
+    randomizer_type:
+      raw: None
+    enable_non_login_penalty: true
+    enable_defense_other_guild_player: false
+
+  gameplay:
+    difficulty:
+      raw: None
+    day_time_speed_rate: 1.0
+    night_time_speed_rate: 1.0
+    exp_rate: 1.0
+    pal_capture_rate: 1.0
+    pal_spawn_rate: 1.0
+    death_penalty:
+      raw: All
+    enable_player_to_player_damage: false
+    enable_pvp: false
+    enable_friendly_fire: false
+    can_pickup_other_guild_death_penalty_drop: false
+    active_unko: false
+    enable_aim_assist_pad: true
+    enable_aim_assist_keyboard: false
+    drop_item_max_num: 3000
+    drop_item_max_num_unko: 100
+    drop_item_alive_max_hours: 1.0
+    base_camp_max_num: 128
+    coop_player_max_num: 4
+    is_multiplay: false
+    additional_drop_item_num_when_player_killing_in_pvp_mode: 1
+    additional_drop_item_when_player_killing_in_pvp_mode:
+      raw: "()"
+    enable_additional_drop_item_when_player_killing_in_pvp_mode: false
+    block_respawn_time: 0.0
+    pal_lost: false
+    build_object_damage_rate: 1.0
+    build_object_deterioration_damage_rate: 1.0
+    collection_drop_rate: 1.0
+    collection_object_hp_rate: 1.0
+    collection_object_respawn_speed_rate: 1.0
+    deny_technology_list:
+      raw: "()"
+    enemy_drop_item_rate: 1.0
+    equipment_durability_damage_rate: 1.0
+    guild_player_max_num: 20
+    guild_rejoin_cooldown_minutes: 0
+    item_corruption_multiplier: 1.0
+    item_weight_rate: 1.0
+    pal_auto_hp_regen_rate: 1.0
+    pal_auto_hp_regen_rate_in_sleep: 1.0
+    pal_damage_rate_attack: 1.0
+    pal_damage_rate_defense: 1.0
+    pal_egg_default_hatching_time: 72.0
+    pal_stamina_decrease_rate: 1.0
+    pal_stomach_decrease_rate: 1.0
+    player_auto_hp_regen_rate: 1.0
+    player_auto_hp_regen_rate_in_sleep: 1.0
+    player_damage_rate_attack: 1.0
+    player_damage_rate_defense: 1.0
+    player_stamina_decrease_rate: 1.0
+    player_stomach_decrease_rate: 1.0
+    respawn_penalty_duration_threshold: 0.0
+    respawn_penalty_time_scale: 1.0
+    supply_drop_span: 180.0
+    work_speed_rate: 1.0

@@ -1,0 +1,90 @@
+schema_version: v1
+definition_version: 2
+id: vrising
+name: V Rising Dedicated Server
+metadata:
+  completeness: partial
+  confidence: inspected
+  tested_versions: []
+provenance:
+  sources:
+    - kind: url
+      label: V Rising Dedicated Server wiki
+      url: https://vrising.fandom.com/wiki/V_Rising_Dedicated_Server
+    - kind: url
+      label: V Rising Server Settings wiki
+      url: https://vrising.fandom.com/wiki/Server_Settings
+    - kind: manual
+      label: User-provided SteamCMD app id
+      notes: steamcmd app_update 1829350
+description: V Rising Windows dedicated server installed through SteamCMD and run with Wine.
+tags: [survival, steamcmd, wine]
+acquisition:
+  mode: steamcmd
+  steamcmd:
+    app_id: "1829350"
+    anonymous_login: true
+    platform: windows
+runtime:
+  image_profile: steamcmd-wine
+  image: ghcr.io/gametainer/steamcmd-wine:local
+  min_cpu_millis: 2000
+  min_memory_mb: 4096
+  ports:
+    - name: game
+      container: 27015
+      container_from: settings.host.port
+      protocol: udp
+    - name: query
+      container: 27016
+      container_from: settings.host.query_port
+      protocol: udp
+  readiness:
+    kind: log_pattern
+    path: /data/logs/VRisingServer.log
+    pattern: "[Server] Startup Completed"
+    timeout_seconds: 240
+paths:
+  persistent:
+    - name: game
+      mount: /game
+    - name: data
+      mount: /data
+  standard:
+    - /game
+    - /data
+    - /config
+    - /cache
+    - /secrets
+process:
+  executable: /game/VRisingServer.exe
+  launcher: /usr/local/bin/wine64
+  working_dir: /game
+  env:
+    DISPLAY: ":99"
+    SteamAppId: "1604030"
+  services:
+    - name: xvfb
+      command: /usr/bin/Xvfb
+      args:
+        - ":99"
+        - -screen
+        - "0"
+        - 1024x768x16
+        - -nolisten
+        - tcp
+      readiness:
+        kind: path_exists
+        path: /tmp/.X11-unix/X99
+        timeout_seconds: 10
+      shutdown:
+        signal: term
+        kill_signal: kill
+        timeout_seconds: 5
+lifecycle:
+  pre_start:
+    - name: prepare_data_dirs
+      executable: /bin/sh
+      args:
+        - -c
+        - mkdir -p /data/Settings /data/Saves /data/logs

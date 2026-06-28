@@ -1,0 +1,102 @@
+schema_version: v1
+spec_version: 1
+game_id: factorio
+display_name: Factorio Dedicated Server Settings
+metadata:
+  completeness: partial
+  confidence: inspected
+  tested_versions: []
+provenance:
+  sources:
+    - kind: url
+      label: Factorio server settings example
+      url: https://github.com/wube/factorio-data/blob/master/server-settings.example.json
+    - kind: url
+      label: Factorio command line parameters
+      url: https://wiki.factorio.com/Command_line_parameters
+
+files:
+  server_settings:
+    path: /data/server-settings.json
+    format: json
+
+settings:
+  server.name:
+    type: string
+    default: My Factorio Server
+    env: GAMER_SETTING__SERVER__NAME
+    targets:
+      - kind: file
+        file: server_settings
+        path: name
+
+  server.description:
+    type: string
+    default: Managed by Gametainer
+    env: GAMER_SETTING__SERVER__DESCRIPTION
+    targets:
+      - kind: file
+        file: server_settings
+        path: description
+
+  server.max_players:
+    type: int
+    default: 10
+    env: GAMER_SETTING__SERVER__MAX_PLAYERS
+    targets:
+      - kind: file
+        file: server_settings
+        path: max_players
+
+  server.visibility.public:
+    type: bool
+    default: false
+    env: GAMER_SETTING__SERVER__VISIBILITY__PUBLIC
+    targets:
+      - kind: file
+        file: server_settings
+        path: visibility.public
+
+  server.visibility.lan:
+    type: bool
+    default: true
+    env: GAMER_SETTING__SERVER__VISIBILITY__LAN
+    targets:
+      - kind: file
+        file: server_settings
+        path: visibility.lan
+
+process_args:
+  save_path:
+    type: string
+    default: /data/saves/world.zip
+    env: GAMER_ARG__SAVE_PATH
+    target:
+      style: positional
+
+  bind:
+    type: string
+    default: 0.0.0.0
+    env: GAMER_ARG__BIND
+    target:
+      flag: --bind
+      style: separate
+
+  port:
+    type: int
+    default: 34197
+    env: GAMER_ARG__PORT
+    target:
+      flag: --port
+      style: separate
+
+process:
+  args:
+    - --start-server
+    - "{{ process.args.save_path }}"
+    - --server-settings
+    - /data/server-settings.json
+    - --bind
+    - "{{ process.args.bind }}"
+    - --port
+    - "{{ process.args.port }}"

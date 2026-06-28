@@ -1,0 +1,723 @@
+schema_version: v1
+spec_version: 1
+game_id: palworld
+display_name: Palworld Dedicated Server Settings
+metadata:
+  completeness: common
+  confidence: inspected
+  tested_versions: []
+provenance:
+  sources:
+    - kind: url
+      label: Palworld default settings example
+      url: https://raw.githubusercontent.com/hmes98318/palworld-docker/refs/heads/main/DefaultPalWorldSettings.ini
+    - kind: url
+      label: Palworld server arguments
+      url: https://docs.palworldgame.com/settings-and-operation/arguments/
+    - kind: url
+      label: Palworld configuration parameters
+      url: https://docs.palworldgame.com/settings-and-operation/configuration/
+
+files:
+  palworld_settings:
+    path: /game/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
+    format: ue_option_settings
+    section: /Script/Pal.PalGameWorldSettings
+    entry: OptionSettings
+
+settings:
+  server.name:
+    type: string
+    default: Default Palworld Server
+    env: GAMER_SETTING__SERVER__NAME
+    targets: [{kind: file, file: palworld_settings, path: ServerName}]
+
+  server.description:
+    type: string
+    default: ""
+    env: GAMER_SETTING__SERVER__DESCRIPTION
+    targets: [{kind: file, file: palworld_settings, path: ServerDescription}]
+
+  server.admin_password:
+    type: string
+    default: ""
+    env: GAMER_SETTING__SERVER__ADMIN_PASSWORD
+    sensitive: true
+    targets: [{kind: file, file: palworld_settings, path: AdminPassword}]
+
+  server.password:
+    type: string
+    default: ""
+    env: GAMER_SETTING__SERVER__PASSWORD
+    sensitive: true
+    targets: [{kind: file, file: palworld_settings, path: ServerPassword}]
+
+  server.max_players:
+    type: int
+    default: 32
+    env: GAMER_SETTING__SERVER__MAX_PLAYERS
+    targets: [{kind: file, file: palworld_settings, path: ServerPlayerMaxNum}]
+
+  server.public_ip:
+    type: string
+    default: ""
+    env: GAMER_SETTING__SERVER__PUBLIC_IP
+    targets: [{kind: file, file: palworld_settings, path: PublicIP}]
+
+  server.public_port:
+    type: int
+    default: 8211
+    env: GAMER_SETTING__SERVER__PUBLIC_PORT
+    targets: [{kind: file, file: palworld_settings, path: PublicPort}]
+
+  server.rcon.enabled:
+    type: bool
+    default: false
+    env: GAMER_SETTING__SERVER__RCON__ENABLED
+    targets: [{kind: file, file: palworld_settings, path: RCONEnabled}]
+
+  server.rcon.port:
+    type: int
+    default: 25575
+    env: GAMER_SETTING__SERVER__RCON__PORT
+    targets: [{kind: file, file: palworld_settings, path: RCONPort}]
+
+  server.rest_api.enabled:
+    type: bool
+    default: false
+    env: GAMER_SETTING__SERVER__REST_API__ENABLED
+    targets: [{kind: file, file: palworld_settings, path: RESTAPIEnabled}]
+
+  server.rest_api.port:
+    type: int
+    default: 8212
+    env: GAMER_SETTING__SERVER__REST_API__PORT
+    targets: [{kind: file, file: palworld_settings, path: RESTAPIPort}]
+
+  server.region:
+    type: string
+    default: ""
+    env: GAMER_SETTING__SERVER__REGION
+    targets: [{kind: file, file: palworld_settings, path: Region}]
+
+  server.use_auth:
+    type: bool
+    default: true
+    env: GAMER_SETTING__SERVER__USE_AUTH
+    targets: [{kind: file, file: palworld_settings, path: bUseAuth}]
+
+  server.ban_list_url:
+    type: string
+    default: https://api.palworldgame.com/api/banlist.txt
+    env: GAMER_SETTING__SERVER__BAN_LIST_URL
+    targets: [{kind: file, file: palworld_settings, path: BanListURL}]
+
+  server.allow_client_mod:
+    type: bool
+    default: false
+    env: GAMER_SETTING__SERVER__ALLOW_CLIENT_MOD
+    targets: [{kind: file, file: palworld_settings, path: bAllowClientMod}]
+
+  server.show_join_left_message:
+    type: bool
+    default: true
+    env: GAMER_SETTING__SERVER__SHOW_JOIN_LEFT_MESSAGE
+    targets: [{kind: file, file: palworld_settings, path: bIsShowJoinLeftMessage}]
+
+  server.use_backup_save_data:
+    type: bool
+    default: false
+    env: GAMER_SETTING__SERVER__USE_BACKUP_SAVE_DATA
+    targets: [{kind: file, file: palworld_settings, path: bIsUseBackupSaveData}]
+
+  server.chat_post_limit_per_minute:
+    type: int
+    default: 10
+    env: GAMER_SETTING__SERVER__CHAT_POST_LIMIT_PER_MINUTE
+    targets: [{kind: file, file: palworld_settings, path: ChatPostLimitPerMinute}]
+
+  server.crossplay_platforms:
+    type: raw
+    default: {raw: "(Steam,Xbox,PS5,Mac)"}
+    env: GAMER_SETTING__SERVER__CROSSPLAY_PLATFORMS
+    targets: [{kind: file, file: palworld_settings, path: CrossplayPlatforms}]
+
+  server.allow_connect_platform:
+    type: raw
+    default: {raw: "()"}
+    env: GAMER_SETTING__SERVER__ALLOW_CONNECT_PLATFORM
+    targets: [{kind: file, file: palworld_settings, path: AllowConnectPlatform}]
+
+  server.log_format_type:
+    type: raw
+    default: {raw: Text}
+    env: GAMER_SETTING__SERVER__LOG_FORMAT_TYPE
+    targets: [{kind: file, file: palworld_settings, path: LogFormatType}]
+
+  performance.base_camp_max_num_in_guild:
+    type: int
+    default: 4
+    env: GAMER_SETTING__PERFORMANCE__BASE_CAMP_MAX_NUM_IN_GUILD
+    targets: [{kind: file, file: palworld_settings, path: BaseCampMaxNumInGuild}]
+
+  performance.base_camp_worker_max_num:
+    type: int
+    default: 15
+    env: GAMER_SETTING__PERFORMANCE__BASE_CAMP_WORKER_MAX_NUM
+    targets: [{kind: file, file: palworld_settings, path: BaseCampWorkerMaxNum}]
+
+  performance.item_container_force_mark_dirty_interval:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__PERFORMANCE__ITEM_CONTAINER_FORCE_MARK_DIRTY_INTERVAL
+    targets: [{kind: file, file: palworld_settings, path: ItemContainerForceMarkDirtyInterval}]
+
+  performance.max_building_limit_num:
+    type: int
+    default: 0
+    env: GAMER_SETTING__PERFORMANCE__MAX_BUILDING_LIMIT_NUM
+    targets: [{kind: file, file: palworld_settings, path: MaxBuildingLimitNum}]
+
+  performance.server_replicate_pawn_cull_distance:
+    type: float
+    default: 15000.000000
+    env: GAMER_SETTING__PERFORMANCE__SERVER_REPLICATE_PAWN_CULL_DISTANCE
+    targets: [{kind: file, file: palworld_settings, path: ServerReplicatePawnCullDistance}]
+
+  features.auto_reset_guild_no_online_players:
+    type: bool
+    default: false
+    env: GAMER_SETTING__FEATURES__AUTO_RESET_GUILD_NO_ONLINE_PLAYERS
+    targets: [{kind: file, file: palworld_settings, path: bAutoResetGuildNoOnlinePlayers}]
+
+  features.auto_reset_guild_time_no_online_players:
+    type: float
+    default: 72.000000
+    env: GAMER_SETTING__FEATURES__AUTO_RESET_GUILD_TIME_NO_ONLINE_PLAYERS
+    targets: [{kind: file, file: palworld_settings, path: AutoResetGuildTimeNoOnlinePlayers}]
+
+  features.allow_enhance_stat_attack:
+    type: bool
+    default: true
+    env: GAMER_SETTING__FEATURES__ALLOW_ENHANCE_STAT_ATTACK
+    targets: [{kind: file, file: palworld_settings, path: bAllowEnhanceStat_Attack}]
+
+  features.allow_enhance_stat_health:
+    type: bool
+    default: true
+    env: GAMER_SETTING__FEATURES__ALLOW_ENHANCE_STAT_HEALTH
+    targets: [{kind: file, file: palworld_settings, path: bAllowEnhanceStat_Health}]
+
+  features.allow_enhance_stat_stamina:
+    type: bool
+    default: true
+    env: GAMER_SETTING__FEATURES__ALLOW_ENHANCE_STAT_STAMINA
+    targets: [{kind: file, file: palworld_settings, path: bAllowEnhanceStat_Stamina}]
+
+  features.allow_enhance_stat_weight:
+    type: bool
+    default: true
+    env: GAMER_SETTING__FEATURES__ALLOW_ENHANCE_STAT_WEIGHT
+    targets: [{kind: file, file: palworld_settings, path: bAllowEnhanceStat_Weight}]
+
+  features.allow_enhance_stat_work_speed:
+    type: bool
+    default: true
+    env: GAMER_SETTING__FEATURES__ALLOW_ENHANCE_STAT_WORK_SPEED
+    targets: [{kind: file, file: palworld_settings, path: bAllowEnhanceStat_WorkSpeed}]
+
+  features.allow_global_palbox_export:
+    type: bool
+    default: true
+    env: GAMER_SETTING__FEATURES__ALLOW_GLOBAL_PALBOX_EXPORT
+    targets: [{kind: file, file: palworld_settings, path: bAllowGlobalPalboxExport}]
+
+  features.allow_global_palbox_import:
+    type: bool
+    default: true
+    env: GAMER_SETTING__FEATURES__ALLOW_GLOBAL_PALBOX_IMPORT
+    targets: [{kind: file, file: palworld_settings, path: bAllowGlobalPalboxImport}]
+
+  features.build_area_limit:
+    type: bool
+    default: false
+    env: GAMER_SETTING__FEATURES__BUILD_AREA_LIMIT
+    targets: [{kind: file, file: palworld_settings, path: bBuildAreaLimit}]
+
+  features.character_recreate_in_hardcore:
+    type: bool
+    default: false
+    env: GAMER_SETTING__FEATURES__CHARACTER_RECREATE_IN_HARDCORE
+    targets: [{kind: file, file: palworld_settings, path: bCharacterRecreateInHardcore}]
+
+  features.display_pvp_item_num_on_world_map_base_camp:
+    type: bool
+    default: false
+    env: GAMER_SETTING__FEATURES__DISPLAY_PVP_ITEM_NUM_ON_WORLD_MAP_BASE_CAMP
+    targets: [{kind: file, file: palworld_settings, path: bDisplayPvPItemNumOnWorldMap_BaseCamp}]
+
+  features.display_pvp_item_num_on_world_map_player:
+    type: bool
+    default: false
+    env: GAMER_SETTING__FEATURES__DISPLAY_PVP_ITEM_NUM_ON_WORLD_MAP_PLAYER
+    targets: [{kind: file, file: palworld_settings, path: bDisplayPvPItemNumOnWorldMap_Player}]
+
+  features.enable_fast_travel:
+    type: bool
+    default: true
+    env: GAMER_SETTING__FEATURES__ENABLE_FAST_TRAVEL
+    targets: [{kind: file, file: palworld_settings, path: bEnableFastTravel}]
+
+  features.enable_fast_travel_only_base_camp:
+    type: bool
+    default: false
+    env: GAMER_SETTING__FEATURES__ENABLE_FAST_TRAVEL_ONLY_BASE_CAMP
+    targets: [{kind: file, file: palworld_settings, path: bEnableFastTravelOnlyBaseCamp}]
+
+  features.enable_invader_enemy:
+    type: bool
+    default: true
+    env: GAMER_SETTING__FEATURES__ENABLE_INVADER_ENEMY
+    targets: [{kind: file, file: palworld_settings, path: bEnableInvaderEnemy}]
+
+  features.exist_player_after_logout:
+    type: bool
+    default: false
+    env: GAMER_SETTING__FEATURES__EXIST_PLAYER_AFTER_LOGOUT
+    targets: [{kind: file, file: palworld_settings, path: bExistPlayerAfterLogout}]
+
+  features.hardcore:
+    type: bool
+    default: false
+    env: GAMER_SETTING__FEATURES__HARDCORE
+    targets: [{kind: file, file: palworld_settings, path: bHardcore}]
+
+  features.invisible_other_guild_base_camp_area_fx:
+    type: bool
+    default: false
+    env: GAMER_SETTING__FEATURES__INVISIBLE_OTHER_GUILD_BASE_CAMP_AREA_FX
+    targets: [{kind: file, file: palworld_settings, path: bInvisibleOtherGuildBaseCampAreaFX}]
+
+  features.randomizer_pal_level_random:
+    type: bool
+    default: false
+    env: GAMER_SETTING__FEATURES__RANDOMIZER_PAL_LEVEL_RANDOM
+    targets: [{kind: file, file: palworld_settings, path: bIsRandomizerPalLevelRandom}]
+
+  features.start_location_select_by_map:
+    type: bool
+    default: true
+    env: GAMER_SETTING__FEATURES__START_LOCATION_SELECT_BY_MAP
+    targets: [{kind: file, file: palworld_settings, path: bIsStartLocationSelectByMap}]
+
+  features.show_player_list:
+    type: bool
+    default: true
+    env: GAMER_SETTING__FEATURES__SHOW_PLAYER_LIST
+    targets: [{kind: file, file: palworld_settings, path: bShowPlayerList}]
+
+  features.randomizer_seed:
+    type: string
+    default: ""
+    env: GAMER_SETTING__FEATURES__RANDOMIZER_SEED
+    targets: [{kind: file, file: palworld_settings, path: RandomizerSeed}]
+
+  features.randomizer_type:
+    type: raw
+    default: {raw: None}
+    env: GAMER_SETTING__FEATURES__RANDOMIZER_TYPE
+    targets: [{kind: file, file: palworld_settings, path: RandomizerType}]
+
+  features.enable_non_login_penalty:
+    type: bool
+    default: true
+    env: GAMER_SETTING__FEATURES__ENABLE_NON_LOGIN_PENALTY
+    targets: [{kind: file, file: palworld_settings, path: bEnableNonLoginPenalty}]
+
+  features.enable_defense_other_guild_player:
+    type: bool
+    default: false
+    env: GAMER_SETTING__FEATURES__ENABLE_DEFENSE_OTHER_GUILD_PLAYER
+    targets: [{kind: file, file: palworld_settings, path: bEnableDefenseOtherGuildPlayer}]
+
+  gameplay.difficulty:
+    type: raw
+    default: {raw: None}
+    env: GAMER_SETTING__GAMEPLAY__DIFFICULTY
+    targets: [{kind: file, file: palworld_settings, path: Difficulty}]
+
+  gameplay.day_time_speed_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__DAY_TIME_SPEED_RATE
+    targets: [{kind: file, file: palworld_settings, path: DayTimeSpeedRate}]
+
+  gameplay.night_time_speed_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__NIGHT_TIME_SPEED_RATE
+    targets: [{kind: file, file: palworld_settings, path: NightTimeSpeedRate}]
+
+  gameplay.exp_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__EXP_RATE
+    targets: [{kind: file, file: palworld_settings, path: ExpRate}]
+
+  gameplay.pal_capture_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__PAL_CAPTURE_RATE
+    targets: [{kind: file, file: palworld_settings, path: PalCaptureRate}]
+
+  gameplay.pal_spawn_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__PAL_SPAWN_RATE
+    targets: [{kind: file, file: palworld_settings, path: PalSpawnNumRate}]
+
+  gameplay.death_penalty:
+    type: raw
+    default: {raw: All}
+    env: GAMER_SETTING__GAMEPLAY__DEATH_PENALTY
+    targets: [{kind: file, file: palworld_settings, path: DeathPenalty}]
+
+  gameplay.enable_player_to_player_damage:
+    type: bool
+    default: false
+    env: GAMER_SETTING__GAMEPLAY__ENABLE_PLAYER_TO_PLAYER_DAMAGE
+    targets: [{kind: file, file: palworld_settings, path: bEnablePlayerToPlayerDamage}]
+
+  gameplay.enable_pvp:
+    type: bool
+    default: false
+    env: GAMER_SETTING__GAMEPLAY__ENABLE_PVP
+    targets: [{kind: file, file: palworld_settings, path: bIsPvP}]
+
+  gameplay.enable_friendly_fire:
+    type: bool
+    default: false
+    env: GAMER_SETTING__GAMEPLAY__ENABLE_FRIENDLY_FIRE
+    targets: [{kind: file, file: palworld_settings, path: bEnableFriendlyFire}]
+
+  gameplay.can_pickup_other_guild_death_penalty_drop:
+    type: bool
+    default: false
+    env: GAMER_SETTING__GAMEPLAY__CAN_PICKUP_OTHER_GUILD_DEATH_PENALTY_DROP
+    targets: [{kind: file, file: palworld_settings, path: bCanPickupOtherGuildDeathPenaltyDrop}]
+
+  gameplay.active_unko:
+    type: bool
+    default: false
+    env: GAMER_SETTING__GAMEPLAY__ACTIVE_UNKO
+    targets: [{kind: file, file: palworld_settings, path: bActiveUNKO}]
+
+  gameplay.enable_aim_assist_pad:
+    type: bool
+    default: true
+    env: GAMER_SETTING__GAMEPLAY__ENABLE_AIM_ASSIST_PAD
+    targets: [{kind: file, file: palworld_settings, path: bEnableAimAssistPad}]
+
+  gameplay.enable_aim_assist_keyboard:
+    type: bool
+    default: false
+    env: GAMER_SETTING__GAMEPLAY__ENABLE_AIM_ASSIST_KEYBOARD
+    targets: [{kind: file, file: palworld_settings, path: bEnableAimAssistKeyboard}]
+
+  gameplay.drop_item_max_num:
+    type: int
+    default: 3000
+    env: GAMER_SETTING__GAMEPLAY__DROP_ITEM_MAX_NUM
+    targets: [{kind: file, file: palworld_settings, path: DropItemMaxNum}]
+
+  gameplay.drop_item_max_num_unko:
+    type: int
+    default: 100
+    env: GAMER_SETTING__GAMEPLAY__DROP_ITEM_MAX_NUM_UNKO
+    targets: [{kind: file, file: palworld_settings, path: DropItemMaxNum_UNKO}]
+
+  gameplay.drop_item_alive_max_hours:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__DROP_ITEM_ALIVE_MAX_HOURS
+    targets: [{kind: file, file: palworld_settings, path: DropItemAliveMaxHours}]
+
+  gameplay.base_camp_max_num:
+    type: int
+    default: 128
+    env: GAMER_SETTING__GAMEPLAY__BASE_CAMP_MAX_NUM
+    targets: [{kind: file, file: palworld_settings, path: BaseCampMaxNum}]
+
+  gameplay.coop_player_max_num:
+    type: int
+    default: 4
+    env: GAMER_SETTING__GAMEPLAY__COOP_PLAYER_MAX_NUM
+    targets: [{kind: file, file: palworld_settings, path: CoopPlayerMaxNum}]
+
+  gameplay.is_multiplay:
+    type: bool
+    default: false
+    env: GAMER_SETTING__GAMEPLAY__IS_MULTIPLAY
+    targets: [{kind: file, file: palworld_settings, path: bIsMultiplay}]
+
+  gameplay.additional_drop_item_num_when_player_killing_in_pvp_mode:
+    type: int
+    default: 1
+    env: GAMER_SETTING__GAMEPLAY__ADDITIONAL_DROP_ITEM_NUM_WHEN_PLAYER_KILLING_IN_PVP_MODE
+    targets: [{kind: file, file: palworld_settings, path: AdditionalDropItemNumWhenPlayerKillingInPvPMode}]
+
+  gameplay.additional_drop_item_when_player_killing_in_pvp_mode:
+    type: raw
+    default: {raw: "()"}
+    env: GAMER_SETTING__GAMEPLAY__ADDITIONAL_DROP_ITEM_WHEN_PLAYER_KILLING_IN_PVP_MODE
+    targets: [{kind: file, file: palworld_settings, path: AdditionalDropItemWhenPlayerKillingInPvPMode}]
+
+  gameplay.enable_additional_drop_item_when_player_killing_in_pvp_mode:
+    type: bool
+    default: false
+    env: GAMER_SETTING__GAMEPLAY__ENABLE_ADDITIONAL_DROP_ITEM_WHEN_PLAYER_KILLING_IN_PVP_MODE
+    targets: [{kind: file, file: palworld_settings, path: bAdditionalDropItemWhenPlayerKillingInPvPMode}]
+
+  gameplay.block_respawn_time:
+    type: float
+    default: 0.000000
+    env: GAMER_SETTING__GAMEPLAY__BLOCK_RESPAWN_TIME
+    targets: [{kind: file, file: palworld_settings, path: BlockRespawnTime}]
+
+  gameplay.pal_lost:
+    type: bool
+    default: false
+    env: GAMER_SETTING__GAMEPLAY__PAL_LOST
+    targets: [{kind: file, file: palworld_settings, path: bPalLost}]
+
+  gameplay.build_object_damage_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__BUILD_OBJECT_DAMAGE_RATE
+    targets: [{kind: file, file: palworld_settings, path: BuildObjectDamageRate}]
+
+  gameplay.build_object_deterioration_damage_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__BUILD_OBJECT_DETERIORATION_DAMAGE_RATE
+    targets: [{kind: file, file: palworld_settings, path: BuildObjectDeteriorationDamageRate}]
+
+  gameplay.collection_drop_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__COLLECTION_DROP_RATE
+    targets: [{kind: file, file: palworld_settings, path: CollectionDropRate}]
+
+  gameplay.collection_object_hp_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__COLLECTION_OBJECT_HP_RATE
+    targets: [{kind: file, file: palworld_settings, path: CollectionObjectHpRate}]
+
+  gameplay.collection_object_respawn_speed_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__COLLECTION_OBJECT_RESPAWN_SPEED_RATE
+    targets: [{kind: file, file: palworld_settings, path: CollectionObjectRespawnSpeedRate}]
+
+  gameplay.deny_technology_list:
+    type: raw
+    default: {raw: "()"}
+    env: GAMER_SETTING__GAMEPLAY__DENY_TECHNOLOGY_LIST
+    targets: [{kind: file, file: palworld_settings, path: DenyTechnologyList}]
+
+  gameplay.enemy_drop_item_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__ENEMY_DROP_ITEM_RATE
+    targets: [{kind: file, file: palworld_settings, path: EnemyDropItemRate}]
+
+  gameplay.equipment_durability_damage_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__EQUIPMENT_DURABILITY_DAMAGE_RATE
+    targets: [{kind: file, file: palworld_settings, path: EquipmentDurabilityDamageRate}]
+
+  gameplay.guild_player_max_num:
+    type: int
+    default: 20
+    env: GAMER_SETTING__GAMEPLAY__GUILD_PLAYER_MAX_NUM
+    targets: [{kind: file, file: palworld_settings, path: GuildPlayerMaxNum}]
+
+  gameplay.guild_rejoin_cooldown_minutes:
+    type: int
+    default: 0
+    env: GAMER_SETTING__GAMEPLAY__GUILD_REJOIN_COOLDOWN_MINUTES
+    targets: [{kind: file, file: palworld_settings, path: GuildRejoinCooldownMinutes}]
+
+  gameplay.item_corruption_multiplier:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__ITEM_CORRUPTION_MULTIPLIER
+    targets: [{kind: file, file: palworld_settings, path: ItemCorruptionMultiplier}]
+
+  gameplay.item_weight_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__ITEM_WEIGHT_RATE
+    targets: [{kind: file, file: palworld_settings, path: ItemWeightRate}]
+
+  gameplay.pal_auto_hp_regen_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__PAL_AUTO_HP_REGEN_RATE
+    targets: [{kind: file, file: palworld_settings, path: PalAutoHPRegeneRate}]
+
+  gameplay.pal_auto_hp_regen_rate_in_sleep:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__PAL_AUTO_HP_REGEN_RATE_IN_SLEEP
+    targets: [{kind: file, file: palworld_settings, path: PalAutoHpRegeneRateInSleep}]
+
+  gameplay.pal_damage_rate_attack:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__PAL_DAMAGE_RATE_ATTACK
+    targets: [{kind: file, file: palworld_settings, path: PalDamageRateAttack}]
+
+  gameplay.pal_damage_rate_defense:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__PAL_DAMAGE_RATE_DEFENSE
+    targets: [{kind: file, file: palworld_settings, path: PalDamageRateDefense}]
+
+  gameplay.pal_egg_default_hatching_time:
+    type: float
+    default: 72.000000
+    env: GAMER_SETTING__GAMEPLAY__PAL_EGG_DEFAULT_HATCHING_TIME
+    targets: [{kind: file, file: palworld_settings, path: PalEggDefaultHatchingTime}]
+
+  gameplay.pal_stamina_decrease_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__PAL_STAMINA_DECREASE_RATE
+    targets: [{kind: file, file: palworld_settings, path: PalStaminaDecreaceRate}]
+
+  gameplay.pal_stomach_decrease_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__PAL_STOMACH_DECREASE_RATE
+    targets: [{kind: file, file: palworld_settings, path: PalStomachDecreaceRate}]
+
+  gameplay.player_auto_hp_regen_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__PLAYER_AUTO_HP_REGEN_RATE
+    targets: [{kind: file, file: palworld_settings, path: PlayerAutoHPRegeneRate}]
+
+  gameplay.player_auto_hp_regen_rate_in_sleep:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__PLAYER_AUTO_HP_REGEN_RATE_IN_SLEEP
+    targets: [{kind: file, file: palworld_settings, path: PlayerAutoHpRegeneRateInSleep}]
+
+  gameplay.player_damage_rate_attack:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__PLAYER_DAMAGE_RATE_ATTACK
+    targets: [{kind: file, file: palworld_settings, path: PlayerDamageRateAttack}]
+
+  gameplay.player_damage_rate_defense:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__PLAYER_DAMAGE_RATE_DEFENSE
+    targets: [{kind: file, file: palworld_settings, path: PlayerDamageRateDefense}]
+
+  gameplay.player_stamina_decrease_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__PLAYER_STAMINA_DECREASE_RATE
+    targets: [{kind: file, file: palworld_settings, path: PlayerStaminaDecreaceRate}]
+
+  gameplay.player_stomach_decrease_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__PLAYER_STOMACH_DECREASE_RATE
+    targets: [{kind: file, file: palworld_settings, path: PlayerStomachDecreaceRate}]
+
+  gameplay.respawn_penalty_duration_threshold:
+    type: float
+    default: 0.000000
+    env: GAMER_SETTING__GAMEPLAY__RESPAWN_PENALTY_DURATION_THRESHOLD
+    targets: [{kind: file, file: palworld_settings, path: RespawnPenaltyDurationThreshold}]
+
+  gameplay.respawn_penalty_time_scale:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__RESPAWN_PENALTY_TIME_SCALE
+    targets: [{kind: file, file: palworld_settings, path: RespawnPenaltyTimeScale}]
+
+  gameplay.supply_drop_span:
+    type: float
+    default: 180.000000
+    env: GAMER_SETTING__GAMEPLAY__SUPPLY_DROP_SPAN
+    targets: [{kind: file, file: palworld_settings, path: SupplyDropSpan}]
+
+  gameplay.work_speed_rate:
+    type: float
+    default: 1.000000
+    env: GAMER_SETTING__GAMEPLAY__WORK_SPEED_RATE
+    targets: [{kind: file, file: palworld_settings, path: WorkSpeedRate}]
+
+process_args:
+  log_format:
+    type: string
+    default: text
+    env: GAMER_ARG__LOG_FORMAT
+    target: {flag: -logformat, style: equals}
+
+  performance.no_async_loading_thread:
+    type: bool
+    default: true
+    env: GAMER_ARG__PERFORMANCE__NO_ASYNC_LOADING_THREAD
+    target: {flag: -NoAsyncLoadingThread, style: flag_only}
+
+  performance.use_multithread_for_ds:
+    type: bool
+    default: true
+    env: GAMER_ARG__PERFORMANCE__USE_MULTITHREAD_FOR_DS
+    target: {flag: -UseMultithreadForDS, style: flag_only}
+
+  performance.use_perf_threads:
+    type: bool
+    default: true
+    env: GAMER_ARG__PERFORMANCE__USE_PERF_THREADS
+    target: {flag: -useperfthreads, style: flag_only}
+
+  players:
+    type: int
+    default: 32
+    env: GAMER_ARG__PLAYERS
+    target: {flag: -players, style: equals}
+
+  port:
+    type: int
+    default: 8211
+    env: GAMER_ARG__PORT
+    target: {flag: -port, style: equals}
+
+  public_ip:
+    type: string
+    env: GAMER_ARG__PUBLIC_IP
+    target: {flag: -publicip, style: equals}
+
+  public_lobby:
+    type: bool
+    default: false
+    env: GAMER_ARG__PUBLIC_LOBBY
+    target: {flag: -publiclobby, style: flag_only}
+
+  public_port:
+    type: int
+    env: GAMER_ARG__PUBLIC_PORT
+    target: {flag: -publicport, style: equals}
+
+  worker_threads:
+    type: int
+    env: GAMER_ARG__WORKER_THREADS
+    target: {flag: -NumberOfWorkerThreadsServer, style: equals}

@@ -1,0 +1,106 @@
+game:
+  id: vrising
+
+install:
+  mode: steamcmd
+  install_dir: /game
+  cache_dir: /cache
+  steamcmd_app_id: "1829350"
+  steamcmd_anonymous_login: true
+
+paths:
+  data_dir: /data
+  config_dir: /config
+  secrets_dir: /secrets
+
+process:
+  executable: /game/VRisingServer.exe
+  launcher: /usr/local/bin/wine64
+  working_dir: /game
+  env:
+    DISPLAY: ":99"
+    SteamAppId: "1604030"
+  args:
+    persistent_data_path: 'Z:\data'
+    log_file: 'Z:\data\logs\VRisingServer.log'
+  services:
+    - name: xvfb
+      command: /usr/bin/Xvfb
+      args:
+        - ":99"
+        - -screen
+        - "0"
+        - 1024x768x16
+        - -nolisten
+        - tcp
+      readiness:
+        kind: path_exists
+        path: /tmp/.X11-unix/X99
+        timeout_seconds: 10
+      shutdown:
+        signal: term
+        kill_signal: kill
+        timeout_seconds: 5
+
+readiness:
+  probes:
+    - name: log
+      kind: file_contains
+      path: /data/logs/VRisingServer.log
+      pattern: "[Server] Startup Completed"
+      timeout_seconds: 240
+
+settings:
+  host:
+    name: My V Rising Server
+    description: Managed by Gametainer
+    port: 27015
+    query_port: 27016
+    max_connected_users: 40
+    max_connected_admins: 4
+    server_fps: 30
+    save_name: world1
+    password: ""
+    secure: true
+    list_on_steam: false
+    list_on_eos: false
+    auto_save_count: 20
+    auto_save_interval: 120
+    compress_save_files: true
+    game_settings_preset: ""
+    admin_only_debug_events: true
+    disable_debug_events: false
+
+  game:
+    game_mode_type: PvE
+    castle_damage_mode: Never
+    siege_weapon_health: Normal
+    player_damage_mode: Always
+    castle_heart_damage_mode: CanBeDestroyedOnlyWhenDecaying
+    pvp_protection_mode: Medium
+    death_container_permission: Anyone
+    relic_spawn_type: Unique
+    can_loot_enemy_containers: false
+    blood_bound_equipment: true
+    teleport_bound_items: true
+    allow_global_chat: true
+    all_waypoints_unlocked: false
+    free_castle_claim: false
+    free_castle_destroy: false
+    inactivity_kill_enabled: true
+    inactivity_kill_time_min: 3600
+    inactivity_kill_time_max: 604800
+    clan_size: 4
+    inventory_stacks_modifier: 1.0
+    material_yield_modifier_global: 1.0
+    blood_essence_yield_modifier: 1.0
+    durability_drain_modifier: 1.0
+    castle_decay_rate_modifier: 1.0
+    castle_blood_essence_drain_modifier: 1.0
+    build_cost_modifier: 1.0
+    recipe_cost_modifier: 1.0
+    craft_rate_modifier: 1.0
+    refinement_cost_modifier: 1.0
+    refinement_rate_modifier: 1.0
+    servant_convert_rate_modifier: 1.0
+    repair_cost_modifier: 1.0

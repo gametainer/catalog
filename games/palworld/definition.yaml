@@ -1,0 +1,46 @@
+schema_version: v1
+definition_version: 1
+id: palworld
+name: Palworld Dedicated Server
+metadata:
+  completeness: partial
+  confidence: inspected
+  tested_versions: []
+provenance:
+  sources:
+    - kind: manual
+      label: User-provided SteamCMD app id and install command
+      notes: steamcmd +login anonymous +app_update 2394010 validate +quit
+description: Palworld Linux dedicated server installed through SteamCMD.
+tags: [survival, steamcmd]
+acquisition:
+  mode: steamcmd
+  steamcmd:
+    app_id: "2394010"
+    anonymous_login: true
+runtime:
+  image_profile: steamcmd
+  image: ghcr.io/gametainer/steamcmd:local
+  min_cpu_millis: 2000
+  min_memory_mb: 8192
+  ports:
+    - name: game
+      container: 8211
+      container_from: process.args.port
+      protocol: udp
+    - name: query
+      container: 27015
+      protocol: udp
+paths:
+  persistent:
+    - name: game
+      mount: /game
+  standard:
+    - /game
+    - /data
+    - /config
+    - /cache
+    - /secrets
+process:
+  executable: /game/PalServer.sh
+  working_dir: /game

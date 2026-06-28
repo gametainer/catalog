@@ -1,0 +1,160 @@
+schema_version: v1
+spec_version: 1
+game_id: valheim
+display_name: Valheim Dedicated Server Settings
+metadata:
+  completeness: common
+  confidence: inspected
+  tested_versions: []
+provenance:
+  sources:
+    - kind: url
+      label: Valheim dedicated server guide
+      url: https://www.valheimgame.com/support/a-guide-to-dedicated-servers/
+      notes: Official guide captured by user on 2026-06-27. Includes required packages libatomic1, libpulse-dev, and libpulse0; default ports 2456-2457/udp; ready line "Game server connected"; and world/admin/ban/permit files in the save path.
+
+process_args:
+  server.name:
+    type: string
+    default: My Valheim Server
+    env: GAMER_ARG__SERVER__NAME
+    target: {flag: -name, style: separate}
+
+  server.port:
+    type: int
+    default: 2456
+    env: GAMER_ARG__SERVER__PORT
+    target: {flag: -port, style: separate}
+
+  world.name:
+    type: string
+    default: Dedicated
+    env: GAMER_ARG__WORLD__NAME
+    target: {flag: -world, style: separate}
+
+  server.password:
+    type: string
+    default: change-me
+    env: GAMER_ARG__SERVER__PASSWORD
+    target: {flag: -password, style: separate}
+
+  data.savedir:
+    type: string
+    default: /data
+    env: GAMER_ARG__DATA__SAVEDIR
+    target: {flag: -savedir, style: separate}
+
+  server.public:
+    type: int
+    default: 1
+    env: GAMER_ARG__SERVER__PUBLIC
+    target: {flag: -public, style: separate}
+
+  logging.log_file:
+    type: string
+    default: /data/logs/valheim-server.log
+    env: GAMER_ARG__LOGGING__LOG_FILE
+    target: {flag: -logFile, style: separate}
+
+  saves.save_interval:
+    type: int
+    default: 1800
+    env: GAMER_ARG__SAVES__SAVE_INTERVAL
+    target: {flag: -saveinterval, style: separate}
+
+  saves.backups:
+    type: int
+    default: 4
+    env: GAMER_ARG__SAVES__BACKUPS
+    target: {flag: -backups, style: separate}
+
+  saves.backup_short:
+    type: int
+    default: 7200
+    env: GAMER_ARG__SAVES__BACKUP_SHORT
+    target: {flag: -backupshort, style: separate}
+
+  saves.backup_long:
+    type: int
+    default: 43200
+    env: GAMER_ARG__SAVES__BACKUP_LONG
+    target: {flag: -backuplong, style: separate}
+
+  crossplay.enabled:
+    type: bool
+    default: false
+    env: GAMER_ARG__CROSSPLAY__ENABLED
+    target: {flag: -crossplay, style: flag_only}
+
+  crossplay.instance_id:
+    type: string
+    default: ""
+    env: GAMER_ARG__CROSSPLAY__INSTANCE_ID
+    target: {flag: -instanceid, style: separate}
+
+  world_modifiers.preset:
+    type: string
+    default: ""
+    env: GAMER_ARG__WORLD_MODIFIERS__PRESET
+    target: {flag: -preset, style: separate}
+
+  world_modifiers.combat:
+    type: string
+    default: ""
+    env: GAMER_ARG__WORLD_MODIFIERS__COMBAT
+    target:
+      style: template
+      args:
+        - -modifier
+        - Combat
+        - "{{ process.args.world_modifiers.combat }}"
+
+  world_modifiers.death_penalty:
+    type: string
+    default: ""
+    env: GAMER_ARG__WORLD_MODIFIERS__DEATH_PENALTY
+    target:
+      style: template
+      args:
+        - -modifier
+        - DeathPenalty
+        - "{{ process.args.world_modifiers.death_penalty }}"
+
+  world_modifiers.resources:
+    type: string
+    default: ""
+    env: GAMER_ARG__WORLD_MODIFIERS__RESOURCES
+    target:
+      style: template
+      args:
+        - -modifier
+        - Resources
+        - "{{ process.args.world_modifiers.resources }}"
+
+  world_modifiers.raids:
+    type: string
+    default: ""
+    env: GAMER_ARG__WORLD_MODIFIERS__RAIDS
+    target:
+      style: template
+      args:
+        - -modifier
+        - Raids
+        - "{{ process.args.world_modifiers.raids }}"
+
+  world_modifiers.portals:
+    type: string
+    default: ""
+    env: GAMER_ARG__WORLD_MODIFIERS__PORTALS
+    target:
+      style: template
+      args:
+        - -modifier
+        - Portals
+        - "{{ process.args.world_modifiers.portals }}"
+
+  world_modifiers.setkey:
+    type: string
+    default: ""
+    env: GAMER_ARG__WORLD_MODIFIERS__SETKEY
+    target: {flag: -setkey, style: separate}

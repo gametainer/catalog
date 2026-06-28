@@ -1,0 +1,30 @@
+game:
+  id: factorio
+
+install:
+  mode: archive
+  install_dir: /game
+  cache_dir: /cache
+  auto_update: true
+
+paths:
+  data_dir: /data
+  config_dir: /config
+  secrets_dir: /secrets
+
+process:
+  executable: /game/bin/x64/factorio
+  working_dir: /game
+  args:
+    save_path: /data/saves/world.zip
+    bind: 0.0.0.0
+    port: 34197
+
+settings:
+  server:
+    name: My Factorio Server
+    description: Managed by Gametainer
+    max_players: 10
+    visibility:
+      public: false
+      lan: true

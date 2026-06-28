@@ -1,0 +1,65 @@
+schema_version: v1
+definition_version: 1
+id: valheim
+name: Valheim Dedicated Server
+metadata:
+  completeness: common
+  confidence: inspected
+  tested_versions: []
+provenance:
+  sources:
+    - kind: url
+      label: Valheim dedicated server guide
+      url: https://www.valheimgame.com/support/a-guide-to-dedicated-servers/
+      notes: Official guide captured by user on 2026-06-27.
+description: Valheim Linux dedicated server installed through SteamCMD.
+tags: [survival, steamcmd]
+acquisition:
+  mode: steamcmd
+  steamcmd:
+    app_id: "896660"
+    anonymous_login: true
+runtime:
+  image_profile: steamcmd
+  image: ghcr.io/gametainer/steamcmd:local
+  min_cpu_millis: 2000
+  min_memory_mb: 4096
+  ports:
+    - name: game
+      container: 2456
+      container_from: process.args.server.port
+      protocol: udp
+    - name: query
+      container: 2457
+      container_from: process.args.server.port
+      container_offset: 1
+      protocol: udp
+  readiness:
+    kind: log_pattern
+    path: /data/logs/valheim-server.log
+    pattern: Game server connected
+    timeout_seconds: 120
+paths:
+  persistent:
+    - name: game
+      mount: /game
+    - name: data
+      mount: /data
+  standard:
+    - /game
+    - /data
+    - /config
+    - /cache
+    - /secrets
+process:
+  executable: /game/valheim_server.x86_64
+  working_dir: /game
+  env:
+    LD_LIBRARY_PATH: /game/linux64
+lifecycle:
+  pre_start:
+    - name: prepare_data_dirs
+      executable: /bin/sh
+      args:
+        - -c
+        - mkdir -p /data/logs
