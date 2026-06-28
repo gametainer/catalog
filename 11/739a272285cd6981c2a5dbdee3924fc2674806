@@ -1,0 +1,59 @@
+games/palworld/settings.spec.yaml
+  s_3bffb53c17a525::t_f0ef7a736e9f89 1-723
+games/factorio/definition.yaml
+  s_3bffb53c17a525::t_32393d29b3d4a8 1-55
+games/factorio/settings.spec.yaml
+  s_3bffb53c17a525::t_566b80ec00029d 1-102
+README.md
+  s_3bffb53c17a525::t_c372e0ca860825 22,36,38,42,44,48,52,56-70
+  s_3bffb53c17a525::t_fbe292260c2edf 19-21
+  s_3bffb53c17a525::t_dd66e22e4e5de2 23-25,33-35
+  s_3bffb53c17a525::t_a45803780257ae 37
+  s_3bffb53c17a525::t_80d4f3a26e75ab 39-41
+  s_3bffb53c17a525::t_56c36705b16b69 43
+  s_3bffb53c17a525::t_051e24f7b0bb47 45-47
+  s_3bffb53c17a525::t_e1fd0029a5fbfa 49-51
+  s_3bffb53c17a525::t_740995dc09639e 53-55
+  s_3bffb53c17a525::t_a5c2e3e4e0ffbd 71-73
+  s_3bffb53c17a525::t_a3414e7618bdf8 1-18,26-32,74-93
+games/palworld/settings.template.yaml
+  s_3bffb53c17a525::t_83f26ad375440b 1-155
+games/valheim/settings.template.yaml
+  s_3bffb53c17a525::t_55617c1ea82b00 1-49
+index.yaml
+  s_3bffb53c17a525::t_eb3fc6252f1250 1-19
+games/vrising/definition.yaml
+  s_3bffb53c17a525::t_26802fe1cdc11b 1-90
+Justfile
+  s_3bffb53c17a525::t_19c7b6454d295a 3-15
+  s_3bffb53c17a525::t_b14f2bc13228f7 1-2
+  s_3bffb53c17a525::t_b0fa06fd11ef59 16-17
+games/vrising/settings.spec.yaml
+  s_3bffb53c17a525::t_bf1d224252d534 1-515
+games/palworld/definition.yaml
+  s_3bffb53c17a525::t_6ed5a5c33e38b9 1-46
+games/factorio/settings.template.yaml
+  s_3bffb53c17a525::t_7366eaaca851e4 1-30
+games/valheim/definition.yaml
+  s_3bffb53c17a525::t_b857532db83990 1-65
+games/valheim/settings.spec.yaml
+  s_3bffb53c17a525::t_51247bbc86fe2b 1-160
+games/vrising/settings.template.yaml
+  s_3bffb53c17a525::t_a79fe49943886d 1-106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "11739a272285cd6981c2a5dbdee3924fc2674806",
+  "prompts": {},
+  "sessions": {
+    "s_3bffb53c17a525": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ef6c7-8529-7ff3-baef-867f6d1e58ee",
+        "model": "gpt-5.5"
+      },
+      "human_author": null
+    }
+  }
+}
