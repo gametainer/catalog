@@ -8,10 +8,13 @@ default:
 validate:
     {{gametainer}} catalog validate --templates .
 
+doctor:
+    {{gametainer}} catalog doctor --templates .
+
 games:
     {{gametainer}} games list --templates .
 
 show game:
     {{gametainer}} catalog show {{game}} --templates .
 
-check: validate games
+check: validate doctor games

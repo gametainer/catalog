@@ -60,12 +60,14 @@ from the catalog root with:
 
 ```bash
 gametainer catalog validate --templates .
+gametainer catalog doctor --templates .
 ```
 
 The included `Justfile` is only a convenience wrapper around the installed CLI:
 
 ```bash
 just validate
+just doctor
 just games
 just show factorio
 ```

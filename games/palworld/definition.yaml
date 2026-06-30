@@ -11,6 +11,9 @@ provenance:
     - kind: manual
       label: User-provided SteamCMD app id and install command
       notes: steamcmd +login anonymous +app_update 2394010 validate +quit
+    - kind: manual
+      label: Observed startup log
+      notes: PalServer prints "Running Palworld dedicated server on :<port>" during startup.
 description: Palworld Linux dedicated server installed through SteamCMD.
 tags: [survival, steamcmd]
 acquisition:
@@ -31,6 +34,10 @@ runtime:
     - name: query
       container: 27015
       protocol: udp
+  readiness:
+    kind: log_pattern
+    pattern: Running Palworld dedicated server on
+    timeout_seconds: 180
 paths:
   persistent:
     - name: game

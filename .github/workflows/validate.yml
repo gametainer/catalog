@@ -56,4 +56,5 @@ jobs:
           set -euo pipefail
           gametainer version
           gametainer catalog validate --templates .
+          gametainer catalog doctor --templates .
           gametainer games list --templates .
