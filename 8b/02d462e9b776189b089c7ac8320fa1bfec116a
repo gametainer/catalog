@@ -1,0 +1,25 @@
+.github/workflows/validate.yml
+  s_3bffb53c17a525::t_caf970e9107ec1 59
+games/palworld/definition.yaml
+  s_3bffb53c17a525::t_38fc334f4f6720 14-16,37-40
+README.md
+  s_3bffb53c17a525::t_be3be2526bbb4c 63,70
+Justfile
+  s_3bffb53c17a525::t_5638e70d940334 11-13,20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "8b02d462e9b776189b089c7ac8320fa1bfec116a",
+  "prompts": {},
+  "sessions": {
+    "s_3bffb53c17a525": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ef6c7-8529-7ff3-baef-867f6d1e58ee",
+        "model": "gpt-5.5"
+      },
+      "human_author": "JinxCappa <git@jinxcappa.dev>"
+    }
+  }
+}
