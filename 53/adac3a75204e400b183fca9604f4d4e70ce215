@@ -1,0 +1,23 @@
+games/vrising/definition.yaml
+  s_3bffb53c17a525::t_c59bbaa890a66f 47-52
+README.md
+  s_3bffb53c17a525::t_4118a433106d87 26-27,94-96,98-108
+games/valheim/definition.yaml
+  s_3bffb53c17a525::t_827e65b70b15f2 42-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "53adac3a75204e400b183fca9604f4d4e70ce215",
+  "prompts": {},
+  "sessions": {
+    "s_3bffb53c17a525": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ef6c7-8529-7ff3-baef-867f6d1e58ee",
+        "model": "gpt-5.5"
+      },
+      "human_author": "JinxCappa <git@jinxcappa.dev>"
+    }
+  }
+}
