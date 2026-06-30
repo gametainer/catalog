@@ -39,6 +39,12 @@ runtime:
     path: /data/logs/valheim-server.log
     pattern: Game server connected
     timeout_seconds: 120
+  logs:
+    files:
+      server:
+        path: /data/logs/valheim-server.log
+        stream_to_stdout: true
+        follow: true
 paths:
   persistent:
     - name: game

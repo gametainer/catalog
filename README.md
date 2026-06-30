@@ -23,7 +23,8 @@ games/
 
 - `index.yaml` lists supported games and points to each game directory.
 - `definition.yaml` defines install mode, image profile, ports, persistent
-  paths, process launch details, lifecycle steps, and readiness checks.
+  paths, process launch details, lifecycle steps, readiness checks, and
+  file-backed logs.
 - `settings.spec.yaml` defines user-facing settings and how they map to config
   files or process arguments.
 - `settings.template.yaml` is the default generated `gamer` config input for a
@@ -90,4 +91,18 @@ When adding or changing a game template:
 - Keep defaults close to the upstream server defaults.
 - Declare all required ports and persistent paths.
 - Add readiness metadata when the server has a reliable startup signal.
+- Add `runtime.logs.files` for important game log files, especially when a
+  game writes useful startup or runtime output to a file instead of
+  stdout/stderr.
 - Validate the catalog before opening a pull request.
+
+Readiness and logs are related but separate:
+
+- `runtime.readiness` tells Gametainer how to decide that a server is ready.
+- `runtime.logs.files` tells `gamer` which game-owned log files should be
+  streamed or exposed through operator log commands.
+
+If a readiness check watches a file, declare that file under
+`runtime.logs.files` as well. Current Gametainer builds keep a fallback for
+older templates, but explicit log metadata is the catalog contract going
+forward.

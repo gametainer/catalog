@@ -44,6 +44,12 @@ runtime:
     path: /data/logs/VRisingServer.log
     pattern: "[Server] Startup Completed"
     timeout_seconds: 240
+  logs:
+    files:
+      server:
+        path: /data/logs/VRisingServer.log
+        stream_to_stdout: true
+        follow: true
 paths:
   persistent:
     - name: game
