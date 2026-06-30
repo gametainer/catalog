@@ -1,0 +1,14 @@
+.gametainer-version
+  h_30afaad5482ce1 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "f83282188f9bb2a7cf2fccc907aafef0cf046c5f",
+  "prompts": {},
+  "humans": {
+    "h_30afaad5482ce1": {
+      "author": "JinxCappa <git@jinxcappa.dev>"
+    }
+  }
+}
