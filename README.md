@@ -74,6 +74,12 @@ just show factorio
 
 The catalog should validate before template changes are merged.
 
+## Changelog
+
+Update `CHANGELOG.md` whenever template behavior changes. Use the
+`Compatibility` section for runtime support, migration policy, image profile,
+portability, persistent path, or operator-impacting changes.
+
 ## Current Templates
 
 - `factorio`: archive-based Linux dedicated server.
@@ -92,10 +98,12 @@ When adding or changing a game template:
 - Prefer normalized user-facing setting names.
 - Keep defaults close to the upstream server defaults.
 - Declare all required ports and persistent paths.
+- Declare runtime compatibility and migration policy.
 - Add readiness metadata when the server has a reliable startup signal.
 - Add `runtime.logs.files` for important game log files, especially when a
   game writes useful startup or runtime output to a file instead of
   stdout/stderr.
+- Update `CHANGELOG.md` with notable template changes.
 - Validate the catalog before opening a pull request.
 
 Readiness and logs are related but separate:
