@@ -28,6 +28,12 @@ acquisition:
 runtime:
   image_profile: steamcmd-wine
   image: ghcr.io/gametainer/steamcmd-wine:local
+  compatibility:
+    supported: [native, fex]
+    data_portability: same_runtime
+    install_data: runtime_specific
+    migration: same_runtime_only
+    notes: V Rising Wine data is only validated within the same Gametainer runtime variant.
   min_cpu_millis: 2000
   min_memory_mb: 4096
   ports:
