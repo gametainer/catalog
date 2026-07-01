@@ -1,0 +1,25 @@
+games/factorio/definition.yaml
+  s_3bffb53c17a525::t_fc798695fb08b7 25-30
+games/valheim/definition.yaml
+  s_3bffb53c17a525::t_fc798695fb08b7 25-30
+games/palworld/definition.yaml
+  s_3bffb53c17a525::t_fc798695fb08b7 27-32
+games/vrising/definition.yaml
+  s_3bffb53c17a525::t_fc798695fb08b7 31-36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "67fe82c9e9233a0d2aef8e400bed08370bd16d00",
+  "prompts": {},
+  "sessions": {
+    "s_3bffb53c17a525": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ef6c7-8529-7ff3-baef-867f6d1e58ee",
+        "model": "gpt-5.5"
+      },
+      "human_author": "JinxCappa <git@jinxcappa.dev>"
+    }
+  }
+}
