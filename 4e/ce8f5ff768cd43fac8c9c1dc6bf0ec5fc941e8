@@ -1,0 +1,21 @@
+README.md
+  s_3bffb53c17a525::t_b9041600ed2675 77-82,101,106
+CHANGELOG.md
+  s_3bffb53c17a525::t_b9041600ed2675 1-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "4ece8f5ff768cd43fac8c9c1dc6bf0ec5fc941e8",
+  "prompts": {},
+  "sessions": {
+    "s_3bffb53c17a525": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ef6c7-8529-7ff3-baef-867f6d1e58ee",
+        "model": "gpt-5.5"
+      },
+      "human_author": "JinxCappa <git@jinxcappa.dev>"
+    }
+  }
+}
